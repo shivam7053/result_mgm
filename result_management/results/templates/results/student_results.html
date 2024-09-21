@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Results</title>
+</head>
+<body>
+    <h1>Student Results</h1>
+    <form method="GET">
+        <label>College:</label>
+        <input type="text" name="college" placeholder="College Name">
+        <label>Stream:</label>
+        <input type="text" name="stream" placeholder="Stream Name">
+        <label>Batch:</label>
+        <input type="text" name="batch" placeholder="Batch Year">
+        <label>Semester:</label>
+        <input type="text" name="semester" placeholder="Semester">
+        <button type="submit">Filter</button>
+    </form>
+
+    <table border="1">
+        <thead>
+            <tr>
+                <th>University Roll No</th>
+                <th>Name</th>
+                <th>College</th>
+                <th>Stream</th>
+                <th>Batch</th>
+                <th>Semester</th>
+                <th>CGPA</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for student in student_data %}
+            <tr>
+                <td>{{ student }}</td>
+                <td>{{ student_data[student].name }}</td>
+                <td>{{ student_data[student].college }}</td>
+                <td>{{ student_data[student].stream }}</td>
+                <td>{{ student_data[student].batch }}</td>
+                <td>
+                    {% for sem in student_data[student].semesters %}
+                    <p>{{ sem.semester }}: {{ sem.cgpa }}</p>
+                    {% endfor %}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
