@@ -26,3 +26,4 @@ class StudentResult(models.Model):
         # Assuming CGPA is calculated out of 10 based on average score
         average = self.average_score
         return round((average / 100) * 10, 2)
+
